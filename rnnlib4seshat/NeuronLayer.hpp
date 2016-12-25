@@ -68,10 +68,10 @@ template <class F> struct NeuronLayer: public FlatLayer
 	}
 	void feed_back(const vector<int>& coords)
 	{
-		LOOP(TDDD t, zip(this->inputErrors[coords], this->outputActivations[coords], this->outputErrors[coords]))
-		{
-			t.get<0>() = F::deriv(t.get<1>()) * t.get<2>();
-		}
+		// LOOP(TDDD t, zip(this->inputErrors[coords], this->outputActivations[coords], this->outputErrors[coords]))
+		// {
+		// 	t.get<0>() = F::deriv(t.get<1>()) * t.get<2>();
+		// }
 	}
 };
 

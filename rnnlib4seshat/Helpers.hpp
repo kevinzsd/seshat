@@ -151,20 +151,20 @@ typedef pair<const string, real_t> PCSD;
 typedef pair<string, int> PSI;
 typedef pair<int, string> PIS;
 typedef pair<string, string> PSS;
-typedef const tuple<real_t&, real_t&, real_t&, real_t&>& TDDDD;
-typedef const tuple<real_t&, real_t&, real_t&, real_t&, real_t&>& TDDDDD;
-typedef const tuple<real_t&, real_t&, real_t&>& TDDD;
-typedef const tuple<real_t&, real_t&, int&>& TDDI;
-typedef const tuple<real_t&, real_t&, real_t&>& TDDF;
-typedef const tuple<real_t&, real_t&, real_t>& TDDCF;
-typedef const tuple<real_t&, real_t&>& TDD;
-typedef const tuple<int, string>& TIS;
-typedef const tuple<int, int>& TII;
-typedef const tuple<int, real_t>& TID;
-typedef const tuple<int, set<int>&>& TISETI;
-typedef const tuple<int&, bool, int>& TIBI;
-typedef const tuple<real_t, Log<real_t>& >& TDL;
-typedef const tuple<real_t&, Log<real_t>, Log<real_t> >& TDLL;
+typedef const boost::tuple<real_t&, real_t&, real_t&, real_t&>& TDDDD;
+typedef const boost::tuple<real_t&, real_t&, real_t&, real_t&, real_t&>& TDDDDD;
+typedef const boost::tuple<real_t&, real_t&, real_t&>& TDDD;
+typedef const boost::tuple<real_t&, real_t&, int&>& TDDI;
+typedef const boost::tuple<real_t&, real_t&, real_t&>& TDDF;
+typedef const boost::tuple<real_t&, real_t&, real_t>& TDDCF;
+typedef const boost::tuple<real_t&, real_t&>& TDD;
+typedef const boost::tuple<int, string>& TIS;
+typedef const boost::tuple<int, int>& TII;
+typedef const boost::tuple<int, real_t>& TID;
+typedef const boost::tuple<int, set<int>&>& TISETI;
+typedef const boost::tuple<int&, bool, int>& TIBI;
+typedef const boost::tuple<real_t, Log<real_t>& >& TDL;
+typedef const boost::tuple<real_t&, Log<real_t>, Log<real_t> >& TDLL;
 typedef Log<real_t> prob_t;
 
 //global variables
@@ -334,10 +334,10 @@ indices(const R& r) {
   return span<typename boost::range_size<R>::type>(boost::size(r));
 }
 template <class R> static pair<
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  counting_iterator<typename range_difference<R>::type>,
                  typename range_iterator<R>::type> >,
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  counting_iterator<typename range_difference<R>::type>,
                  typename range_iterator<R>::type> > >
 enumerate(R& r) {
@@ -543,10 +543,10 @@ template <class R> static int arg_max(const R& r) {
 }
 template <class R1, class R2>
 static pair<
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type> >,
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type> > >
 zip(R1& r1, R2& r2) {
@@ -559,11 +559,11 @@ zip(R1& r1, R2& r2) {
 }
 template <class R1, class R2, class R3>
 static pair<
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type> >,
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type> > >
@@ -579,12 +579,12 @@ zip(R1& r1, R2& r2, R3& r3) {
 }
 template <class R1, class R2, class R3, class R4>
 static pair<
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type,
                  typename range_iterator<R4>::type> >,
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type,
@@ -603,13 +603,13 @@ zip(R1& r1, R2& r2, R3& r3, R4& r4) {
 }
 template <class R1, class R2, class R3, class R4, class R5>
 static pair<
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type,
                  typename range_iterator<R4>::type,
                  typename range_iterator<R5>::type> >,
-  zip_iterator<tuple<
+  zip_iterator<boost::tuple<
                  typename range_iterator<R1>::type,
                  typename range_iterator<R2>::type,
                  typename range_iterator<R3>::type,
@@ -804,25 +804,25 @@ template<class R1, class R2> static void range_divide_equals(
 }
 //TUPLE OPERATIONS
 template<class T1, class T2> static ostream& operator << (
-    ostream& out, const tuple<T1, T2>& t) {
-  out << t.get<0>() << " " << t.get<1>();
+    ostream& out, const boost::tuple<T1, T2>& t) {
+  out << t.template get<0>() << " " << t.template get<1>();
   return out;
 }
 template<class T1, class T2, class T3> static ostream& operator << (
-    ostream& out, const tuple<T1, T2, T3>& t) {
-  out << t.get<0>() << " " << t.get<1>() << " " << t.get<2>();
+    ostream& out, const boost::tuple<T1, T2, T3>& t) {
+  out << t.template get<0>() << " " << t.template get<1>() << " " << t.template get<2>();
   return out;
 }
 template<class T1, class T2, class T3, class T4> static ostream& operator << (
-    ostream& out, const tuple<T1, T2, T3, T4>& t) {
-  out << t.get<0>() << " " << t.get<1>() << " " << t.get<2>() << " "
-      << t.get<3>();
+    ostream& out, const boost::tuple<T1, T2, T3, T4>& t) {
+  out << t.template get<0>() << " " << t.template get<1>() << " " << t.template get<2>() << " "
+      << t.template get<3>();
   return out;
 }
 template<class T1, class T2, class T3, class T4, class T5>
-static ostream& operator << (ostream& out, const tuple<T1, T2, T3, T4, T5>& t) {
-  out << t.get<0>() << " " << t.get<1>() << " " << t.get<2>() << " "
-      << t.get<3>() << " " << t.get<4>();
+static ostream& operator << (ostream& out, const boost::tuple<T1, T2, T3, T4, T5>& t) {
+  out << t.template get<0>() << " " << t.template get<1>() << " " << t.template get<2>() << " "
+      << t.template get<3>() << " " << t.template get<4>();
   return out;
 }
 //PAIR OPERATIONS

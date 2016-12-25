@@ -102,7 +102,7 @@ float GMM::pdf(int c, float *v) {
 
     exponent *= -0.5;
 
-    pr +=  weight[c][i] * pow(2 * PI, -D/2.0) * pow(det[c*G+i], -0.5) * exp( exponent );
+     pr +=  weight[c][i] * pow(2 * PI, -D/2.0) * std::pow(det[c*G+i], -0.5) * exp( exponent );
   }
 
   return prior[c] * pr;

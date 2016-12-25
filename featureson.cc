@@ -37,6 +37,9 @@ covered by the following copyright and permission notice:
 */
 #include "featureson.h"
 
+
+#include <cfloat>
+
 //frame methods
 int frame::get_fr_dim() {
   return 7;

@@ -75,13 +75,13 @@ struct SoftmaxLayer: public FlatLayer{
 	}
 	void feed_forward(const vector<int>& coords)
 	{	
-		//transform to log scale and centre inputs on 0 for safer exponentiation
+		// //transform to log scale and centre inputs on 0 for safer exponentiation
 		View<Log<real_t> > unnormedLogActs = unnormedlogActivations[coords];
-		real_t offset = pair_mean(minmax(this->inputActivations[coords]));
-		LOOP(TDL t, zip(this->inputActivations[coords], unnormedLogActs))
-		{
-			t.get<1>() = Log<real_t>(t.get<0>() - offset, true);
-		}
+		// real_t offset = pair_mean(minmax(this->inputActivations[coords]));
+		// LOOP(TDL t, zip(this->inputActivations[coords], unnormedLogActs))
+		// {
+		// 	t.template get<1>() = Log<real_t>(t.template get<0>() - offset, true);
+		// }
 
 		//apply exponential
 		View<real_t> unnormedActs = unnormedActivations[coords];
@@ -97,10 +97,10 @@ struct SoftmaxLayer: public FlatLayer{
 		View<real_t> outActs = this->outputActivations[coords];
 		View<real_t> outErrs = this->outputErrors[coords];
 		real_t Z = inner_product(outActs, outErrs);
-		LOOP(TDDD t, zip(this->inputErrors[coords], outActs, outErrs))
-		{
-			t.get<0>() = t.get<1>() * (t.get<2>() - Z);
-		}
+		// LOOP(TDDD t, zip(this->inputErrors[coords], outActs, outErrs))
+		// {
+		// 	t.get<0>() = t.get<1>() * (t.get<2>() - Z);
+		// }
 	}
 };
 

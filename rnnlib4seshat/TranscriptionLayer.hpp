@@ -43,6 +43,7 @@ along with RNNLIB.  If not, see <http://www.gnu.org/licenses/>.*/
 #include <boost/bimap.hpp>
 #include "SoftmaxLayer.hpp"
 #include "StringAlignment.hpp"
+#include "Helpers.hpp"
 
 const Log<real_t> logOne(1);
 
@@ -245,10 +246,10 @@ struct TranscriptionLayer: public SoftmaxLayer, public NetworkOutput
 				int k = (s&1) ? seq.targetLabelSeq[s/2] : blank;
 				dEdYTerms[k] += (fvars[s] * bvars[s]);
 			}
-			LOOP(TDLL t, zip(outputErrors[time], dEdYTerms, logActivations[time]))
-			{
-				t.get<0>() = -((t.get<1>() / (logProb * t.get<2>())).exp());
-			}
+			// LOOP(TDLL t, zip(outputErrors[time], dEdYTerms, logActivations[time]))
+			// {
+			// 	t.get<0>() = -((t.get<1>() / (logProb * t.get<2>())).exp());
+			// }
 		}
 		//calculate the aligment errors
 		outputLabelSeq = best_label_seq();
