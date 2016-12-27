@@ -80,7 +80,7 @@ static void dot_transpose(
 }
 
 // out += transpose(M^2) in
-static void dot_transpose_m_squared(
+static void    dot_transpose_m_squared(
     const real_t *in, const real_t *inEnd, const real_t *M, real_t *outBegin,
     real_t *outEnd) {
 #ifdef OP_TRACKING

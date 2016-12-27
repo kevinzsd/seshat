@@ -55,14 +55,10 @@ along with RNNLIB.  If not, see <http://www.gnu.org/licenses/>.*/
 #include <boost/math/distributions.hpp>
 #include <boost/assign/list_of.hpp>
 #include <boost/range/irange.hpp>
+#include <boost/range/const_iterator.hpp>
 #include <math.h>
 #include <numeric>
 #include <utility>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <string>
-#include <sstream>
 #include <list>
 #include <set>
 #include <algorithm>
@@ -70,6 +66,7 @@ along with RNNLIB.  If not, see <http://www.gnu.org/licenses/>.*/
 #include <map>
 #include <assert.h>
 #include "Log.hpp"
+#include "Helpers.h"
 
 using namespace std;
 using namespace boost;
@@ -267,8 +264,8 @@ template <class T> static T bound (
 }
 //CAST OPERATIONS
 template<class T> static string str(const T& t) {
-  stringstream ss;
-  ss << t;
+   std::stringstream ss;
+      ss << t;
   return ss.str();
   //return lexical_cast<string>(t);
 }
@@ -408,7 +405,7 @@ pair<typename range_value<R>::type, typename range_value<R>::type>
 minmax(const R& r) {
   pair<
     typename range_const_iterator<R>::type,
-    typename range_const_iterator<R>::type> p = minmax_element(
+   typename range_const_iterator<R>::type> p = boost::minmax_element(
         boost::begin(r), boost::end(r));
   return make_pair(*p.first, *p.second);
 }
@@ -485,14 +482,14 @@ template <class R> static typename range_value<R>::type max(const R& r) {
 template <class C, class Tr, class R> static void print_range(
     basic_ostream<C, Tr>& out, const R& r,
     const basic_string<C, Tr>& delim = " ") {
-  typename range_const_iterator<R>::type b = boost::begin(r);
-  typename range_const_iterator<R>::type e = boost::end(r);
-  if (b != e) {
-    out << *b;
-    while (++b != e) {
-      out << delim << *b;
-    }
-  }
+//   typename boost::range_const_iterator<R>::type b = boost::begin(r);
+//   typename boost::range_const_iterator<R>::type e = boost::end(r);
+//  if (b != e) {
+//    out << *b;
+//    while (++b != e) {
+//      out << delim << *b;
+//    }
+//  }
 }
 template <class C, class Tr, class R> static void print_range(
     basic_ostream<C, Tr>& out, const R& r, const char delim) {

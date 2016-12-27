@@ -51,6 +51,10 @@ along with RNNLIB.  If not, see <http://www.gnu.org/licenses/>.*/
 #include "Helpers.hpp"
 
 extern bool verbose;
+struct Layer;
+
+ostream& operator <<(ostream& out, const Layer& l);
+
 
 struct Layer: public DataExporter {
   // typedefs
@@ -184,7 +188,6 @@ struct Layer: public DataExporter {
   }
 };
 
-ostream& operator <<(ostream& out, const Layer& l);
 
 struct FlatLayer: public Layer {
   FlatLayer(const string& name, size_t numSeqDims, size_t size, WeightContainer *weight, DataExportHandler *deh, Layer* src = 0):

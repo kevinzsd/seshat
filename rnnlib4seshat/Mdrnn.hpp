@@ -67,6 +67,11 @@ typedef vector<Layer*>::const_iterator CONST_LAYER_IT;
 typedef vector<Layer*>::reverse_iterator REVERSE_LAYER_IT;
 typedef vector<vector<Layer*> >::iterator LEVEL_IT;
 
+struct Mdrnn;
+
+ostream& operator << (ostream& out, const Mdrnn& net);
+
+
 struct Mdrnn {
   // data
   ostream& out;
@@ -445,6 +450,5 @@ struct Mdrnn {
   }
 };
 
-ostream& operator << (ostream& out, const Mdrnn& net);
 
 #endif

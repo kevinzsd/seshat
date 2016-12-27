@@ -26,7 +26,6 @@
 #include <map>
 #include <vector>
 #include <queue>
-#include "sample.h"
 
 #include <xercesc/util/PlatformUtils.hpp>
 #include <xercesc/parsers/XercesDOMParser.hpp>
@@ -40,6 +39,8 @@
 #include <xercesc/dom/DOMNodeIterator.hpp>
 #include <xercesc/dom/DOMNodeList.hpp>
 #include <xercesc/dom/DOMText.hpp>
+#include "sample.h"
+
 
 #define PI 3.14159265
 

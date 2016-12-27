@@ -26,6 +26,7 @@
 
 #define TSIZE 2048
 
+
 SymRec::SymRec(char *config) {
   FILE *fd=fopen(config, "r");
   if( !fd ) {
@@ -305,7 +306,7 @@ int SymRec::classify(Sample *M, SegmentHyp *SegHyp, const int NB, int *vclase, f
   delete[] img;
 
   //n-best classification
-  pair<float,int> clason[NB], clasoff[NB], clashyb[2*NB];
+  pair<float,int> clason[10], clasoff[10], clashyb[20];
     
   for(int i=0; i<NB; i++) {
     clason[i].first = 0.0; //probability
